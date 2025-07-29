@@ -1,73 +1,94 @@
-# Welcome to your Lovable project
-
-## Project info
-
-**URL**: https://lovable.dev/projects/f2c2cb5b-ed2b-4784-9a4a-48c9e0350e13
-
-## How can I edit this code?
-
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/f2c2cb5b-ed2b-4784-9a4a-48c9e0350e13) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/f2c2cb5b-ed2b-4784-9a4a-48c9e0350e13) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+/**
+ * Project: Resumate (Project Siddhi)
+ * ----------------------------------
+ * 
+ * Overview:
+ * This is an AI-powered resume optimization web application
+ * designed to help job seekers tailor their existing resumes 
+ * and generate matching cover letters for any job description.
+ *
+ * Problem Statement:
+ * Many job seekers struggle to optimize resumes so they pass
+ * Applicant Tracking Systems (ATS) and stand out to recruiters.
+ * Manually customizing resumes and cover letters for each job is time-consuming.
+ * We want to automate and simplify this task by leveraging AI.
+ *
+ * What We Are Solving:
+ * - Upload an existing resume file (PDF or DOCX).
+ * - Input a job description text.
+ * - Use AI to extract relevant keywords and skills from the job description.
+ * - Re-write and optimize the resume text to align with that job description.
+ * - Generate a tailored cover letter personalized for the job.
+ * - Provide both optimized resume and cover letter as downloadable files (DOCX or PDF).
+ *
+ * This delivers a one-shot, stateless, no-login lightweight tool
+ * with quick turnaround for users, focusing purely on resume & cover letter optimization.
+ *
+ * Tech Stack Used:
+ * 
+ * Frontend:
+ *  - Framework: React + Next.js (latest)
+ *  - Styling: Tailwind CSS for responsive, modern UI
+ *  - Components: Custom file uploader, text input for job description,
+ *                results display with download buttons, loading spinner, and error banner.
+ *  - State management via React useState hook.
+ *  - API calls made via fetch with multipart/form-data
+ *  - Deployed on Vercel (or Netlify)
+ * 
+ * Backend:
+ *  - Language: Python 3.9+
+ *  - Framework: FastAPI for async, lightweight REST API
+ *  - File parsing:
+ *      * PyMuPDF (fitz) to extract text from PDF resumes
+ *      * python-docx to extract and write DOCX files
+ *  - AI Integration:
+ *      * Google Gemini Pro API (preferred) or fallback OpenAI GPT-4
+ *      * Performs 3-step AI workflow:
+ *          1. Extract ATS keywords from job description
+ *          2. Optimize original resume with keywords integrated
+ *          3. Generate cover letter based on optimized resume and job description
+ *  - Endpoint:
+ *      POST /optimize-resume
+ *      - Accepts multipart form with resume file and job description string
+ *      - Returns optimized resume and cover letter as downloadable files
+ *        (usually DOCX/PDF)
+ *  - Deployed on Render, Railway, or similar server
+ * 
+ * Current State & What We Are Doing:
+ * - Frontend scaffold is complete:
+ *   * File upload input, Job description textarea, submit button, loading & error states.
+ *   * Currently displays returned optimized text on screen.
+ * - Backend logic skeleton ready to:
+ *   * Parse files, send AI prompts, receive optimized text.
+ *   * Generate downloadable DOCX/PDF files from AI results.
+ *   * Return both optimized resume and cover letter files.
+ * - Recent enhancement focus:
+ *   * Enabling backend to return downloadable files instead of text outputs.
+ *   * Frontend to present clear “Download Resume” and “Download Cover Letter” buttons.
+ *   * Optional: Return ZIP with both documents for single-click download.
+ *
+ * User Journey:
+ * 1. User uploads resume PDF/DOCX.
+ * 2. User pastes job description text.
+ * 3. Client sends these inputs to backend API.
+ * 4. Backend extracts and optimizes resume via AI.
+ * 5. Backend generates optimized resume and cover letter files dynamically.
+ * 6. Backend responds with downloadable files or ZIP URL.
+ * 7. Frontend shows download buttons for both files.
+ * 8. User downloads fully AI-optimized resume and cover letter ready to send out.
+ *
+ * Constraints:
+ * - No login/authentication or user account system.
+ * - No history/file storage or analytics.
+ * - Entire workflow is one-shot and stateless.
+ * - Must remain lightweight, fast, and easy to deploy.
+ *
+ * Development Tools:
+ *  - Node.js, npm/yarn for frontend dependencies.
+ *  - Python virtual environment for backend dependencies.
+ *  - GitHub repos separated for frontend and backend.
+ *  - Environment variables (.env) to safely handle AI API keys.
+ *
+ * This prompt helps align Copilot or any AI assistant to generate code,
+ * architectural guides, and helpers consistent with the MVP goals.
+ */
